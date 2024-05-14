@@ -248,18 +248,111 @@
                     <div class="col-lg-6 col-md-12 col-sm-12 d-flex my-5 icono-wrap" id="">
                         <img src="" alt="" width="80" height="60">
         </section>
-        <!-- MEMBRESIA -->
-        <section id="membresia" class="pt-5 imagenFondo">
-            <h1 class=""> . . .
+        <!-- Trabaja con nosotros -->
+        <section id="Trabaja con nosotros" class="pt-5 imagenFondo">
+            <h1 class=""> Sumate a Nuestro Equipo
             </h1>
             <div class="row marginBody">
                 <div class="col-md-4 mb-4">
                     <div class="card h-100">
                         <img src="" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">mas de lo mismo</h5>
-                            <p class="card-text">copy + paste</p>
-                            <a href="#blank" class="btn btn-primary">su turno</a>
+                            <p class="card-text">Buscamos gente apasionada, curiosa, creativa, orientada a soluciones y que trabaje en equipo.</p>
+                           
+                            <!-- Cargar dato curriculum -->
+    <p>Los campos marcados con <span style="color: red;">*</span> son obligatorios.</p>
+    <form>
+        <label for="Foto"> Subi tu foto:</label>
+        <input type="file" id="foto" name="foto" value="foto"> <span style="color: red;">*</span>
+        <br><br>
+        <label for="Nombre"> Nombre:</label><br>
+        <input type="text" id="Nombre" name="Nombre" placeholder="Ingresa tu nombre" required> <span
+            style="color: red;">*</span><br><br>
+        
+        <label for="Apellido"> Apellido/s:</label> <br>
+        <input type="text" id="Apellido" name="Apellido" placeholder="Ingresa tu apellido" required> <span
+            style="color: red;">*</span><br><br>
+       
+        <label for="mail"> Email:</label>  <br>
+        <input type="email" id="mail" name="mail" placeholder="Ingresa tu mail" required> <span
+            style="color: red;">*</span><br><br>
+   
+        <label for="tipo dni"> Seleccione una opción:</label> <span style="color: red;">*</span><br>
+        <select name="tipo dni" id="tipo dni" required>
+            <option value="Documento de identidad"> Documento de identidad</option>
+            <option value="Pasaporte"> Pasaporte</option>
+            <option value="Cédula extranjera"> Cédula extranjera</option>
+            <option value="Otro"> Otro</option>
+        </select>
+        <br> <br>
+        <label for="N° de documento"> N° de documento:</label> <span style="color: red;">*</span><br>
+        <input type="text" id="N° de documento" name="N° de documento" placeholder="Ingresa tu dni" required> 
+        <br> <br>
+       
+        <label for="fecha"> Fecha de Nacimiento:</label> <span style="color: red;">*</span><br>
+        <input type="date" id="fecha" name="fecha" max="2024-03-25" required>
+        <br> <br>
+
+        <label for="codigo_pais">Código de país:</label><span style="color: red;">*</span><br>
+        <select id="codigo_pais" name="codigo_pais" required>
+            <option value="+51">+51 (Perú)</option> 
+            <option value="+54" selected="+54">+54 (Argentina)</option>
+            <option value="+55">+55 (Brasil)</option>
+            <option value="+56">+56 (Chile)</option>
+            <option value="+57">+57 (Colombia)</option>
+            <option value="+58">+58 (Venezuela)</option>
+            <option value="+595">+595 (Paraguay)</option>
+        </select>
+        <label for="numero_telefono">Número de teléfono:</label> <span style="color: red;">*</span>
+        <input type="tel" id="numero_telefono" name="numero_telefono" placeholder="Ingrese su número de teléfono"
+            required><br><br>
+
+        <label for="Género"> Seleccione una opción:</label> <span style="color: red;">*</span><br>
+        <select id="género" name="género" required>
+            <option value="no especificado">No Especificado</option> 
+            <option value="femenino" selected="femenino">Femenino</option>
+            <option value="masculino">Masculino</option> 
+        </select>
+        <br> <br>
+        
+        <label for="provincia"> Seleccione una opción:</label> <span style="color: red;">*</span><br>
+        <select id="provincia" name="provincia" required> 
+            <option value="Buenos Aires">Buenos Aires</option> 
+            <option value="Ciudad Autónoma de Buenos Aires">Ciudad Autónoma de Buenos Aires</option>
+            <option value="Chaco">Chaco</option> 
+            <option value="Chubut">Chubut</option>
+            <option value="Córdoba">Córdoba</option> 
+            <option value="Entre Ríos">Entre Ríos</option> 
+            <option value="Formosa">Formosa</option> 
+            <option value="Jujuy">Jujuy</option> 
+            <option value="La Pampa">La Pampa</option> 
+            <option value="La Rioja">La Rioja</option> 
+            <option value="Mendoza">Mendoza</option> 
+            <option value="Misiones">Misiones</option> 
+            <option value="Neuquén">Neuquén</option> 
+            <option value="Rio Negro">Rio Negro</option> 
+        </select>
+        <br> <br>
+        <label for="archivo"> Subi tu curriculum:</label> <br>
+        <input type="file" id="Archivo" name="archivo" value="file">
+        <br> <br>
+        
+        <label for="idiomas"> Idiomas:</label> <br>
+        <input type="checkbox" name="idioma" value="frances"> Francés
+        <input type="checkbox" name="idioma" value="ingles"> Inglés
+        <input type="checkbox" name="idioma" value="portugues"> Portugués
+        <input type="checkbox" name="idioma" value="italiano"> Italiano
+        <input type="checkbox" name="idioma" value="otro"> otro
+        <br> <br>
+        <input type="checkbox" id="Condiciones" name="Condiciones" required> He leído y acepto los Términos y Condiciones y las
+        Políticas de privacidad <span style="color: red;">*</span><br>
+        <br> <br>
+        <input type="submit" value="Enviar tus datos">
+     
+    </form>
+
+
+
                         </div>
                     </div>
                 </div>
