@@ -76,9 +76,12 @@ body {
 
 .ServicioIndividuales h4 {
     margin-bottom: 25px;
+}
 
-
-
+ /* Establece un tamaño máximo para las imágenes */
+ .card-img-top, .servicio img {
+    max-width: 50%;
+    height: auto;
 }
 
 /* FOOTER */
