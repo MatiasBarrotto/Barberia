@@ -24,8 +24,23 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    
+/* transición*/
+}
+img{
+    position: alsolute;
+    top:0;
+    opacity: 1,
 }
 
+img:hover{
+    opacity: 0.5;
+    transition-property: opacity;
+    transition-duration: 2s;
+    transition-timing-function: easy in ease-in-out;
+    transition-delay: 0.3s;
+
+}
 
 /* *********************************** */
 
@@ -70,8 +85,6 @@ body {
     font-style: normal;
     font-variation-settings: "0";
 
-
-
 }
 
 .ServicioIndividuales h4 {
@@ -83,6 +96,47 @@ body {
     max-width: 50%;
     height: auto;
 }
+
+/*Trabaja con Nosotros*/
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 1em;
+    background: #f9f9f9;
+    border-radius: 5px;
+}
+
+.Form-cv {
+    margin-bottom: 1em;
+}
+label {
+    margin-bottom: .5em;
+    color: #333333;
+    display: block;
+}
+input {
+    border: 1px solid #CCCCCC;
+    padding: .5em;
+    font-size: 1em;
+    width: calc(100% - 1em);
+}
+input[type="submit"] {
+    background: #007BFF;
+    color: white;
+    border: none;
+    padding: 0.75em 1.5em;
+    font-size: 1em;
+    cursor: pointer;
+}
+input[type="submit"]:hover {
+    background: #0056b3;
+}
+.error {
+    color: red;
+    display: none;
+}
+
+
 
 /* FOOTER */
 footer {
