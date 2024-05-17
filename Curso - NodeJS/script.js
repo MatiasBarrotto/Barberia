@@ -1,3 +1,4 @@
+//validacion membresia
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('contactForm');
 
@@ -49,5 +50,17 @@ document.addEventListener('DOMContentLoaded', function() {
             event.preventDefault();
             alert('Por favor, complete todos los campos obligatorios.');
         }
+    });
+});
+
+
+
+// boton click del menu navbar
+document.addEventListener('DOMContentLoaded', function () {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav');
+
+    menuToggle.addEventListener('click', function () {
+        nav.classList.toggle('active');
     });
 });
