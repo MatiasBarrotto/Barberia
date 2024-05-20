@@ -5,36 +5,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>El Filo Dulce Barberia</title>
+    <title>Filo Dulce Barberia</title>
     <link rel="icon" type="icon/png" href="./images/tijeras-ico.png">
 
     <!-- css / font / bootstrap -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/d70b8d6281.js" crossorigin="anonymous"></script>
-
 
 </head>
 
 <body>
     <header>
-        <div class="logo">
-            <img src="images/logo-navbar.png" alt="Logo">
-        </div>
-        <button class="menu-toggle">☰</button>
-        <nav>
-            <ol>
-                <li><a href="#servicios">Servicio</a></li>
-                <li><a href="#tendencias">Tendencia</a></li>
-                <li><a href="#sucursales">Sucursales</a></li>
-                <li><a href="#formulario">Trabaja con Nosotros</a></li>
-            </ol>
+        <nav class="navbar navbar-expand-md fixed-top navbar-light border-3 border-bottom border-dark">
+            <div class="container-fluid">
+                <div class="col-6 azul portada">
+                    <img src="./images/logo-navbar.png" alt="logo" width="100" height="60">
+                    <a class="navbar-brand">Barberia & Peluqueria</a>
+                </div>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#MenuNavegacion">
+                    <span class="navbar-toggler-icon "></span>
+                </button>
+                <div id="MenuNavegacion" class="collapse navbar-collapse justify-content-end">
+                    <ul class="navbar-nav ms-3">
+                        <li class="nav-item"><a class="nav-link link-light" href="#inicio">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link link-light" href="#servicios">Servicios</a></li>
+                        <li class="nav-item"><a class="nav-link link-light" href="#tendencias">Tendencias</a></li>
+                        <li class="nav-item"><a class="nav-link link-light" href="#sucursales">Sucursales</a></li>
+                        <li class="nav-item"><a class="nav-link link-light" href="#formulario">Trabaja con Nosotros</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </nav>
     </header>
     <main>
 
         <!-- ---------- presentación ---------- -->
-        <section class="carousel-section">
+        <section id="inicio" class="carousel-section">
             <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
@@ -83,7 +94,7 @@
 
         <!-- ---------- Servicios ---------- -->
         <section id="servicios" class="w-60 mx-auto text-center pt-5">
-            <h1> Servicios </h1>
+            <h1 class="titulos"> SERVICIOS </h1>
             <h2 class="title-service">
                 Disponemos de diferentes servicios y tratamientos <br>adaptados a tus necesidades y estilo personal.
             </h2>
@@ -99,7 +110,7 @@
                     </div>
                 </div>
                 <div class="card">
-                    <img clas= "imagen" src="./images/Arreglo_Barba.png" alt="">
+                    <img clas="imagen" src="./images/Arreglo_Barba.png" alt="">
                     <div class="card-content">
                         <h3>Arreglo de Barba</h3>
                         <p>Diseños y formas que le darán mejor aspecto a tu barba, sacándole mayor partido de una manera
@@ -109,17 +120,18 @@
                     </div>
                 </div>
                 <div class="card">
-                    <img clas= "imagen" src="./images/Afeitado_De_ritaul.jpeg" alt="">
+                    <img clas="imagen" src="./images/Afeitado_De_ritaul.jpeg" alt="">
                     <div class="card-content">
                         <h3>Afeitado con Ritual</h3>
                         <p>Relajante masaje con vapor y aromas.
                             <br>El arreglo o afeitado se realiza de forma tradicional con navaja y toalla caliente/fría
-                            para un acabado perfecto.</p>
+                            para un acabado perfecto.
+                        </p>
                         <a href="" class="btn">Reservar</a>
                     </div>
                 </div>
                 <div class="card">
-                    <img clas= "imagen" src="./images/Corte_de_Niño.jpg" alt="">
+                    <img clas="imagen" src="./images/Corte_de_Niño.jpg" alt="">
                     <div class="card-content">
                         <h3>Corte Infantil</h3>
                         <p>Un corte de pelo lúdico para los más pequeños supone mejores resultados, conseguimos que los
@@ -129,7 +141,7 @@
                     </div>
                 </div>
                 <div class="card">
-                    <img clas= "imagen" src="./images/procutos.jpg" alt="">
+                    <img clas="imagen" src="./images/procutos.jpg" alt="">
                     <div class="card-content">
                         <h3>Productos</h3>
                         <p>Venta de productos para el cuidado personal, como champús, acondicionadores, productos para
@@ -143,11 +155,9 @@
 
         <!-- ---------- Tendencia ---------- -->
         <section id="tendencias" class="w-60 mx-auto text-center pt-5">
-            <h1 class="">
-                Tendencias
-            </h1>
+            <h1>TENDENCIAS</h1>
             <h2> Te presentamos las tendencias 2024</h2>
-    
+
             <div class="card-container">
                 <div class="card">
                     <img src="./images/Tendencia1.jpg" alt="">
@@ -215,42 +225,59 @@
 
         <!-- ---------- sucursales ---------- -->
         <section id="sucursales" class="w-60 mx-auto text-center pt-5">
-            <h1>Nuestras Sucursales</h1>
+            <h1>NUESTRAS SUCURSALES</h1>
             <br>
-
-            <div class="sucursal">
-                <h2>Filo General Paz <i class="fa-solid fa-map-location-dot"></i></h2>
-                <p><strong>Dirección:</strong> Rosario de Sta. Fe 1283, B° General Paz, Córdoba.</p>
-                <p><strong>Horario:</strong> Lunes a Sábado de 10:00am a 21:00pm</p>
-                <p><a href="https://maps.app.goo.gl/egyBj2UL5bVHSV1y5" target="_blank">Ubicación</a></p>
+            <div class="card-container">
+                <div class="card-maps">
+                    <img src="./images/logo-navbar.png" alt="">
+                    <div class="card-content">
+                        <h2>Filo General Paz <i class="fa-solid fa-map-location-dot"></i></h2>
+                        <p><strong>Dirección:</strong> Rosario de Sta. Fe 1283, B° General Paz, Córdoba.</p>
+                        <p><strong>Horario:</strong> Lunes a Sábado de 10:00am a 21:00pm</p>
+                        <p><a href="https://maps.app.goo.gl/egyBj2UL5bVHSV1y5" target="_blank">Ubicación</a></p>
+                    </div>
+                </div>
             </div>
-
-            <div class="sucursal">
-                <h2>Filo Cerro <i class="fa-solid fa-map-location-dot"></i></h2>
-                <p><strong>Dirección:</strong> Gregorio Y. Gavier 1992 Local 7, B° Cerro de Las Rosas, Córdoba. </p>
-                <p><strong>Horario:</strong> Lunes a Sábado de 10:00am a 21:00pm</p>
-                <p><a href="https://maps.app.goo.gl/mTpSmcjtdNPXi8yt7" target="_blank">Ubicación</a></p>
+            <div class="card-container">
+                <div class="card-maps">
+                    <img src="./images/logo-navbar.png" alt="">
+                    <div class="card-content">
+                        <h2>Filo Cerro <i class="fa-solid fa-map-location-dot"></i></h2>
+                        <p><strong>Dirección:</strong> Gregorio Y. Gavier 1992 Local 7, B° Cerro de Las Rosas, Córdoba.
+                        </p>
+                        <p><strong>Horario:</strong> Lunes a Sábado de 10:00am a 21:00pm</p>
+                        <p><a href="https://maps.app.goo.gl/egyBj2UL5bVHSV1y5" target="_blank">Ubicación</a></p>
+                    </div>
+                </div>
             </div>
-
-            <div class="sucursal">
-                <h2>Filo Las Palmas <i class="fa-solid fa-map-location-dot"></i></h2>
-                <p><strong>Dirección:</strong> Duarte Quirós 3893, B° Las Palmas, Córdoba.</p>
-                <p><strong>Horario:</strong> Lunes a Sábado de 10:00am a 21:00pm</p>
-                <p><a href="https://maps.app.goo.gl/mqhAkkNgqrz4JfWU7" target="_blank">Ubicación</a></p>
+            <div class="card-container">
+                <div class="card-maps">
+                    <img src="./images/logo-navbar.png" alt="">
+                    <div class="card-content">
+                        <h2>Filo Las Palmas <i class="fa-solid fa-map-location-dot"></i></h2>
+                        <p><strong>Dirección:</strong> Duarte Quirós 3893, B° Las Palmas, Córdoba.</p>
+                        <p><strong>Horario:</strong> Lunes a Sábado de 10:00am a 21:00pm</p>
+                        <p><a href="https://maps.app.goo.gl/egyBj2UL5bVHSV1y5" target="_blank">Ubicación</a></p>
+                    </div>
+                </div>
             </div>
-
-            <div class="sucursal">
-                <h2>Filo Cofico <i class="fa-solid fa-map-location-dot"></i></h2>
-                <p><strong>Dirección:</strong> Justo José de Urquiza 1525, Cofico, Córdoba.</p>
-                <p><strong>Horario:</strong> Lunes a Sábado de 10:00am a 21:00pm</p>
-                <p><a href="https://maps.app.goo.gl/63LfwAtXEq1PrP4T7" target="_blank">Ubicación</a></p>
+            <div class="card-container">
+                <div class="card-maps">
+                    <img src="./images/logo-navbar.png" alt="">
+                    <div class="card-content">
+                        <h2>Filo Cofico <i class="fa-solid fa-map-location-dot"></i></h2>
+                        <p><strong>Dirección:</strong> Justo José de Urquiza 1525, Cofico, Córdoba.</p>
+                        <p><strong>Horario:</strong> Lunes a Sábado de 10:00am a 21:00pm</p>
+                        <p><a href="https://maps.app.goo.gl/egyBj2UL5bVHSV1y5" target="_blank">Ubicación</a></p>
+                    </div>
+                </div>
             </div>
         </section>
 
 
         <!-- ---------- menbresia ---------- -->
         <section id="formulario" class="w-50 mx-auto text-center pt-5">
-            <h1>Trabaja con Nosotros</h1>
+            <h1>TRABAJA CON NOSOTROS</h1>
             <form id="contactForm">
 
                 <div class="Form-cv icono">
@@ -382,7 +409,8 @@
                 <h3>filo dulce</h3>
                 <p>COPYRIGHT &copy;2024 FILO DULCE. TODOS LOS DERECHOS RESERVADOS.</p>
                 <ul class="socials">
-                    <li><a href="https://www.facebook.com/filodulce1287/?locale=es_LA"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="https://www.facebook.com/filodulce1287/?locale=es_LA"><i
+                                class="fa fa-facebook"></i></a></li>
                     <li><a href="https://www.instagram.com/filodulcebarberias/"><i class="fa fa-instagram"></i></a></li>
                     <li><a href="https://x.com/barberiasce?lang=es"><i class="fa fa-twitter"></i></a></li>
                 </ul>
