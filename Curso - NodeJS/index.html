@@ -281,12 +281,6 @@
             <form id="contactForm">
 
                 <div class="Form-cv icono">
-                    <label for="Foto"> Subi tu foto:</label>
-                    <input type="file" id="Foto" name="foto">
-                    <br><br>
-                </div>
-
-                <div class="Form-cv icono">
                     <label for="nombre">Nombre:</label><br>
                     <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre">
                     <span class="error" id="nombreError">Este campo es obligatorio</span>
@@ -329,34 +323,34 @@
                 </div>
 
                 <div class="Form-cv icono">
-                <label for="tipo_dni"> Tipo de Dni:</label> <br>
-                <select name="tipo_dni" id="tipo _dni">
-                    <option value="Documento de identidad"> Documento de identidad</option>
+                <label for="tipo_dni">Tipo de Dni:</label><br>
+                <select name="tipo_dni" id="tipo_dni">
+                    <option value="Documento_de_identidad"> Documento de identidad</option>
                     <option value="Pasaporte"> Pasaporte</option>
-                    <option value="Cédula extranjera"> Cédula extranjera</option>
+                    <option value="Cédula_extranjera"> Cédula extranjera</option>
                     <option value="Otro"> Otro</option>
                 </select>
                 <br> <br>
-                </div>
+            </div>
 
                 <div class="Form-cv icono">
-                <label for="N°_de_documento"> N° de documento:</label> <br>
-                <input type="text" id="N°_documento" name="DNI" placeholder="Ingresa tu dni">
+                <label for="numero_documento"> N° de documento:</label> <br>
+                <input type="text" id="numero_documento" name="DNI" placeholder="Ingresa tu dni">
                 <br> <br>
-                </div>
+            </div>
 
                 <div class="Form-cv icono">
                 <label for="fecha"> Fecha de Nacimiento:</label> <br>
                 <input type="date" id="fecha" name="fecha" max="2024-03-25">
                 <br> <br>
-                </div>
+            </div>
 
                 <div class="Form-cv icono">
                     <label for="genero"> Género:</label> <br>
                     <select id="genero" name="genero">
                         <option value="no_especificado">No Especificado</option>
-                        <option value="femenino">Femenino</option>
-                        <option value="masculino">Masculino</option>
+                        <option value="fem">Femenino</option>
+                        <option value="masc">Masculino</option>
                     </select>
                     <br> <br>
                 </div>
@@ -383,19 +377,21 @@
                 </div>
 
                 <div class="Form-cv icono">
-                    <label for="archivo"> Subi tu curriculum:</label> <br>
-                    <input type="file" id="archivo" name="archivo">
+                    <label for="Archivo"> Subi tu curriculum:</label> <br>
+                    <input type="file" id="Archivo" name="archivo">
                     <br> <br>
                 </div>
 
                 <div class="Form-cv icono">
-                    <label for="idiomas"> Idiomas:</label> <br>
-                    <input type="checkbox" value="fr"> Francés
-                    <input type="checkbox" value="en"> Inglés
-                    <input type="checkbox"  value="por"> Portugués
-                    <input type="checkbox" value="ita"> Italiano
-                    <input type="checkbox"  value="otro"> otro
-                    <br> <br>
+                    <label for="select_idiomas"> Idiomas:</label> <br>
+                    <select id="select_idiomas" name="idiomas">
+                        <option value="fr">Francés</option>
+                        <option value="en">Inglés</option>
+                        <option value="por">Portugués</option>
+                        <option value="ita">Italiano</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                    <br><br>
                 </div>
 
                 <input type="submit" value="Enviar">
