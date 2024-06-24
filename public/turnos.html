@@ -1,23 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Filo Dulce Barberia</title>
     <link rel="icon" type="icon/png" href="./images/tijeras-ico.png">
 
     <!-- css / font / bootstrap -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/d70b8d6281.js" crossorigin="anonymous"></script>
-
 </head>
-
 <body>
     <header>
         <nav class="navbar navbar-expand-md fixed-top navbar-light border-3 border-bottom border-dark">
@@ -31,39 +27,35 @@
                 </button>
                 <div id="MenuNavegacion" class="collapse navbar-collapse justify-content-end">
                     <nav>
-                        <a  href="index.html">Inicio</a>
-                        <a  href="Producto.html">Productos</a>
+                        <a href="index.html">Inicio</a>
+                        <a href="Producto.html">Productos</a>
                         <a href="Servicio.html">Servicios</a>
                         <a href="sucursales.html">Sucursales</a>
-                        <a href="turnos.html">Turno</a>
+                        <a href="turnos.html">Turnos</a>
                     </nav>
                 </div>
             </div>
         </nav>
-        
     </header>
     <main>
-
        <!-- ---------- Turnos ---------- -->
        <section id="formulario" class="w-50 mx-auto text-center pt-5">
-        <h1>TURNOS</h1> <br>
+        <h1>TURNOS</h1><br>
         <p>Selecciona el salón que gustes, y reservá tu turno</p><br>
-        <form id="contactForm">
-
+        <article id="turnos"></article>
+        <form id="contactForm" method="POST" action="/turnos" enctype="application/x-www-form-urlencoded">
             <div class="Form-cv icono">
                 <label for="nombre">Nombre:</label><br>
                 <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre">
                 <span class="error" id="nombreError">Este campo es obligatorio</span>
                 <br><br>
             </div>
-
             <div class="Form-cv icono">
                 <label for="apellido">Apellido:</label><br>
                 <input type="text" id="apellido" name="apellido" placeholder="Ingresa tu apellido">
                 <span class="error" id="apellidoError">Este campo es obligatorio</span>
                 <br><br>
             </div>
-
             <div class="Form-cv icono">
                 <label for="codigo_pais">Código de país:</label><br>
                 <select id="codigo_pais" name="codigo_pais">
@@ -77,32 +69,25 @@
                 </select>
                 <br><br>
             </div>
-
             <div class="Form-cv icono">
-            <label for="telefono">Teléfono:</label><br>
-            <input type="tel" id="telefono" name="telefono" placeholder="Ingresa n° de teléfono">
-            <span class="error" id="telefonoError">Este campo es obligatorio</span>
-            <br><br>
-        </div>
-
+                <label for="telefono">Teléfono:</label><br>
+                <input type="tel" id="telefono" name="telefono" placeholder="Ingresa n° de teléfono">
+                <span class="error" id="telefonoError">Este campo es obligatorio</span>
+                <br><br>
+            </div>
             <div class="Form-cv icono">
                 <label for="mail">Email:</label><br>
                 <input type="email" id="mail" name="mail" placeholder="Ingresa tu mail">
                 <span class="error" id="mailError">Este campo es obligatorio</span>
                 <br><br>
             </div>
-
-        
-
             <div class="Form-cv icono">
-            <label for="fecha"> Fecha de Nacimiento:</label> <br>
-            <input type="date" id="fecha" name="fecha" max="2024-03-25">
-            <br> <br>
-        </div>
-
-
+                <label for="fecha_nacimiento">Fecha de Nacimiento:</label><br>
+                <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" max="2024-03-25">
+                <br><br>
+            </div>
             <div class="Form-cv icono">
-                <label for="sucursal"> Selecciona una sucursal:</label> <br>
+                <label for="sucursal">Selecciona una sucursal:</label><br>
                 <select id="sucursal" name="sucursal">
                     <option value="General Paz">Filo General Paz</option>
                     <option value="Cerro">Filo Cerro</option>
@@ -110,63 +95,58 @@
                     <option value="Cofico">Filo Cofico</option>
                     <option value="Córdoba">Córdoba</option>
                 </select>
-                <br> <br>
+                <br><br>
             </div>
-
             <div class="Form-cv icono">
-                <label for="select_barbero"> Selecciona un profesional:</label> <br>
+                <label for="select_barbero">Selecciona un profesional:</label><br>
                 <select id="select_barbero" name="barbero">
-                    <option value="barbero1">Rodri Garcia</option>
-                    <option value="barbero2">Maxi Lopez</option>
-                    <option value="barbero3">Ariel Ortega</option>
-                    <option value="barbero4">Ramiro Lotto</option>
-                    <option value="barbero5">Gonza Barbano</option>
+                    <option value="Rodri Garcia">Rodri Garcia</option>
+                    <option value="Maxi Lopez">Maxi Lopez</option>
+                    <option value="Ariel Ortega">Ariel Ortega</option>
+                    <option value="Ramiro Lotto">Ramiro Lotto</option>
+                    <option value="Gonza Barbano">Gonza Barbano</option>
                 </select>
                 <br><br>
             </div>
-
             <div class="mb-3">
-                <label for="fecha" class="form-label">Selecciona una Fecha</label>
-                <input type="date" id="fecha" class="form-control">
+                <label for="fecha_turno" class="form-label">Selecciona una Fecha</label>
+                <input type="date" id="fecha_turno" name="fecha_turno" class="form-control">
             </div>
-
             <div class="mb-3">
-                <label for="hora" class="form-label">Selecciona una Hora</label>
-                <input type="time" id="hora" class="form-control">
+                <label for="hora_turno" class="form-label">Selecciona una Hora</label>
+                <input type="time" id="hora_turno" name="hora_turno" class="form-control">
             </div>
-
             <div class="Form-cv icono">
-                <label for="Archivo"> Subi tu cupón de descuento:</label> <br>
+                <label for="Archivo">Sube tu cupón de descuento:</label><br>
                 <input type="file" id="Archivo" name="archivo">
-                <br> <br>
+                <br><br>
             </div>
-
             <input type="submit" value="Enviar">
         </form>
+        <br>
+        <!-- ---------<form id="deleteForm" method="POST" action="/turnos?_metodo=DELETE">
+            <input type="hidden" id="idEliminar" name="idEliminar">
+            <button type="submit" id="deleteButton">Eliminar Turno</button>
+        </form>--------- -->
     </section>
-
-
-        <!-- --------- footer ---------- -->
-        <footer>
-            <div class="footer-content">
-                <h3>filo dulce</h3>
-                <p>COPYRIGHT &copy;2024 FILO DULCE. TODOS LOS DERECHOS RESERVADOS.</p>
-                <ul class="socials">
-                    <li><a href="https://www.facebook.com/filodulce1287/?locale=es_LA"><i
-                                class="fa fa-facebook"></i></a></li>
-                    <li><a href="https://www.instagram.com/filodulcebarberias/"><i class="fa fa-instagram"></i></a></li>
-                    <li><a href="https://x.com/barberiasce?lang=es"><i class="fa fa-twitter"></i></a></li>
-                </ul>
-            </div>
-            <div class="footer-bottom">
-                <p>Nodejs | 2024<span> | Grupo 2</span></p>
-            </div>
-        </footer>
-
+    <!-- --------- footer ---------- -->
+    <footer>
+        <div class="footer-content">
+            <h3>filo dulce</h3>
+            <p>COPYRIGHT &copy;2024 FILO DULCE. TODOS LOS DERECHOS RESERVADOS.</p>
+            <ul class="socials">
+                <li><a href="https://www.facebook.com/filodulce1287/?locale=es_LA"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="https://www.instagram.com/filodulcebarberias/"><i class="fa fa-instagram"></i></a></li>
+                <li><a href="https://x.com/barberiasce?lang=es"><i class="fa fa-twitter"></i></a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <p>Nodejs | 2024<span> | Grupo 2</span></p>
+        </div>
+    </footer>
     </main>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
+    <script type="text/javascript" src="./js/turnos.js"></script>
+   
 </body>
-
 </html>
