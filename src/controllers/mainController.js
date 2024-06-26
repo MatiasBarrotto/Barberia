@@ -1,51 +1,45 @@
-const { conn } = require('../db/dbconnect')
+const { conn } = require('../db/dbconnect');
 
 module.exports = {
+    getTurnos: async (req, res) => {
+        try {
+            const [registros] = await conn.query('SELECT * FROM Turnos');
+            res.json(registros);
+        } catch (error) {
+            throw error
+        } finally{
+            conn.releaseConnection()
+        }
+    },
 
-	getListado: async (req, res) => {
-		try{
-			const [ registros ] = await conn.query(`SELECT * FROM turnos`)
-			res.json(registros)
-		} catch (error) {
-			throw error
-		} finally{
-			conn.releaseConnection()
-		}
-	},
+    crearRegistro: async (req, res) => {
+        const { nombre, apellido, codigo_pais, telefono, mail, sucursal, barbero, fecha_turno, hora_turno } = req.body;
+        try {
+            await conn.query('INSERT INTO Turnos (nombre, apellido, codigo_pais, telefono, mail, sucursal, barbero, fecha_turno, hora_turno) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+                 [nombre, apellido, codigo_pais, telefono, mail, sucursal, barbero, fecha_turno, hora_turno]);
+            res.redirect('/api/turnos');
+        } catch (error) {
+            res.status(500).send(error.message);
+        }
+    },
 
-	crearRegistro: async (req, res)=>{
-		//console.log(req.file)
-		const sql = `INSERT INTO Items (nombre, precio, descrip) VALUES (?,?,?);`
-		const creado = await conn.query(sql, [req.body.item, parseFloat(req.body.precio), req.file.filename])
-		//console.log(creado)
-		res.redirect('/turnos.html')
-		/*console.log(req.body)
-		res.send(`<h2>Se hizo algo con ${req.body.create} en el create</h2><a href="/dinamic/1">Regresar a la página anterior</a>`)
-		*/
-	},
+    actualizar: async (req, res) => {
+        const { id, nombre, apellido, codigo_pais, telefono, mail, sucursal, barbero, fecha_turno, hora_turno } = req.body;
+        try {
+            await conn.query('UPDATE Turnos SET nombre = ?, apellido = ?, codigo_pais = ?, telefono = ?, mail = ?, sucursal = ?, barbero = ?, fecha_turno = ?, hora_turno = ? WHERE id = ?', [nombre, apellido, codigo_pais, telefono, mail, sucursal, barbero, fecha_turno, hora_turno, id]);
+            res.send('Turno actualizado');
+        } catch (error) {
+            res.status(500).send(error.message);
+        }
+    },
 
-	getModificar: async (req, res) =>{
-		const [modificar] = await conn.query(`SELECT * FROM Turnos WHERE id=?`, req.params.id)
-		console.log(modificar)
-		res.render('modificar', {
-			tituloDePagina: 'Página para Modificar Items',
-			registro: modificar[0]
-			})
-	},
-
-	actualizar: async (req, res)=>{
-		const sql = `UPDATE turnos SET nombre=?, precio=?, descrip=? WHERE id=?`
-		const {idMod, item, precio, descripcion} = req.body
-		const modificado = await conn.query(sql, [item, precio, descripcion, idMod])
-		console.log(modificado)
-		res.redirect('/turnos.html')
-		//res.send(`<h2>Se hizo algo con ${req.body.actualizar} en el update</h2><a href="/dinamic/1">Regresar a la página anterior</a>`)
-	},
-
-	eliminar: async (req, res)=>{
-		const eliminado = await conn.query(`DELETE FROM turnos WHERE id=?`, req.body.idEliminar)
-		res.redirect('/turnos.html')
-		//res.send(`<h2>Se hizo algo con ${req.body.eliminar} en el delete</h2><a href="/dinamic/1">Regresar a la página anterior</a>`)
-	},
-
-}
+    eliminar: async (req, res) => {
+        const { idEliminar } = req.body;
+        try {
+            await conn.query('DELETE FROM Turnos WHERE id = ?', [idEliminar]);
+            res.redirect('/api/turnos');
+        } catch (error) {
+            res.status(500).send(error.message);
+        }
+    }
+};
