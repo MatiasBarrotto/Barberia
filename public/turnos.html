@@ -87,7 +87,6 @@
                     <option value="Cerro">Filo Cerro</option>
                     <option value="Las Palmas">Filo Las Palmas</option>
                     <option value="Cofico">Filo Cofico</option>
-                    <option value="Córdoba">Córdoba</option>
                 </select>
                 <br><br>
             </div>
@@ -99,6 +98,17 @@
                     <option value="Ariel Ortega">Ariel Ortega</option>
                     <option value="Ramiro Lotto">Ramiro Lotto</option>
                     <option value="Gonza Barbano">Gonza Barbano</option>
+                </select>
+                <br><br>
+            </div>
+            <div class="Form-cv icono">
+                <label for="servicio">Selecciona un servicio:</label><br>
+                <select id="servicio" name="servicio">
+                    <option value="Corte de niño">Corte de niño</option>
+                    <option value="Corte de Pelo">Corte de Pelo</option>
+                    <option value="Arreglo de Barba">Arreglo de Barba</option>
+                    <option value="Afeitado con Ritual">Afeitado con Ritual</option>
+                    <option value="Masaje Exfoliante">Masaje Exfoliante</option>
                 </select>
                 <br><br>
             </div>
@@ -117,28 +127,7 @@
             </div>
             <input type="submit" value="Enviar">
         </form>
-        <br>
-    </form><br>
-   
-    <div id="editModal" style="display:none;">
-        <form id="editForm">
-            <input type="hidden" id="id" name="id">
-            <Campos del formulario de edició>
-            <input type="submit" value="Actualizar">
-        </form>
-    </div>
-</section>
-    
-<form method="POST" action="/api/turnos?_metodo=PUT">
-    <input type="hidden" name="id" value="${registro.id}">
-   
-    <input type="submit" value="Actualizar">
-</form>
-
-<form method="POST" action="/api/turnos?_metodo=DELETE">
-    <input type="hidden" name="idEliminar" value="${registro.id}">
-    <input type="submit" value="Eliminar">
-</form>
+        <br><br>
     </section>
   
     <!-- --------- footer ---------- -->
@@ -158,9 +147,8 @@
     </footer>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="js/turno.js"></script>
-    <!--script src="script.js"></script-->
-    <script src="./turno.js"></script>
+    <script src="script.js"></script>
+    
 
 </body>
 </html>
