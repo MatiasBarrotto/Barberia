@@ -43,7 +43,7 @@
         <h1>TURNOS</h1><br>
         <p>Selecciona el salón que gustes, y reservá tu turno</p><br>
         <article id="turnos"></article>
-        <form id="contactForm" method="POST" action="/api/turnos" enctype="application/x-www-form-urlencoded">
+        <form id="contactForm">
             <div class="Form-cv icono">
                 <label for="nombre">Nombre:</label><br>
                 <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre">
@@ -82,7 +82,7 @@
             </div>
             <div class="Form-cv icono">
                 <label for="sucursal">Selecciona una sucursal:</label><br>
-                <select id="sucursal" name="sucursal">
+                <select id="SucursalId" name="SucursalId">
                     <option value="General Paz">Filo General Paz</option>
                     <option value="Cerro">Filo Cerro</option>
                     <option value="Las Palmas">Filo Las Palmas</option>
@@ -92,7 +92,7 @@
             </div>
             <div class="Form-cv icono">
                 <label for="select_barbero">Selecciona un profesional:</label><br>
-                <select id="select_barbero" name="barbero">
+                <select id="BarberoId" name="BarberoId">
                     <option value="Rodri Garcia">Rodri Garcia</option>
                     <option value="Maxi Lopez">Maxi Lopez</option>
                     <option value="Ariel Ortega">Ariel Ortega</option>
@@ -103,7 +103,7 @@
             </div>
             <div class="Form-cv icono">
                 <label for="servicio">Selecciona un servicio:</label><br>
-                <select id="servicio" name="servicio">
+                <select id="ServicioId" name="ServicioId">
                     <option value="Corte de niño">Corte de niño</option>
                     <option value="Corte de Pelo">Corte de Pelo</option>
                     <option value="Arreglo de Barba">Arreglo de Barba</option>

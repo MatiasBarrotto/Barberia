@@ -391,7 +391,37 @@ input[type="submit"]:hover {
     display: none;
 }
 
+#createForm {
+    background: #f9f9f9;
+    border-radius: 5px;
+    padding: 1em;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
+#createForm .form-label {
+    margin-bottom: .5em;
+    color: #333333;
+}
+
+#createForm .form-control {
+    border: 1px solid #CCCCCC;
+    padding: .5em;
+    font-size: 1em;
+}
+
+#createForm button {
+    background: #007BFF;
+    color: white;
+    border: none;
+    padding: 0.75em 1.5em;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+#createForm button:hover {
+    background: #0056b3;
+}
 
 
 /* ---- footer ----  */
@@ -472,6 +502,7 @@ footer {
     opacity: .5;
     font-weight: 200;
 }
+
 
 /* Media queries */
 @media screen and (min-width: 620px) and (max-width: 980px) {
@@ -561,4 +592,7 @@ footer {
         height: 60vw;
     }
 }
+
+
+
 

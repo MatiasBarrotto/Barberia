@@ -8,22 +8,20 @@ document.addEventListener('DOMContentLoaded', async () => {
             turnosHTML.innerHTML += `
                 <tr>
                     <td>${registro.nombre}</td>
-                    <td>${registro.apellido}</td>
-                    <td>${registro.telefono}</td>
-                    <td>${registro.mail}</td>
-                    <td>${registro.sucursal}</td>
-                    <td>${registro.barbero}</td>
-                    <td>${registro.fecha_turno}</td>
-                    <td>${registro.hora_turno}</td>
-                    <td>${registro.servicio}</td>
+                    <td>${registro.precio}</td>
+                    <td>${registro.descripcion}</td>
+                    <td>${registro.stock}</td>
+                    <td>${registro.categoria_nombre}</td>
+                    <td>${registro.promos_nombre}</td>
+                    <td>${registro.cuotas_nombre}</td>
                     <td>
-                        <button class="btn btn-warning modificar" data-id="${registro.id}">Modificar</button>
-                        <button class="btn btn-danger eliminar" data-id="${registro.id}">Eliminar</button>
+                        <button class="btn btn-warning modificar" data-id="${registro.id_producto}">Modificar</button>
+                        <button class="btn btn-danger eliminar" data-id="${registro.id_producto}">Eliminar</button>
                     </td>
                 </tr>`;
         });
     } catch (error) {
-        console.error('Error al cargar turnos:', error);
+        console.error('Error al cargar productos:', error);
     }
 });
 
@@ -33,56 +31,69 @@ document.querySelector('#turnos').addEventListener('click', async (event) => {
         try {
             const res = await fetch(`/api/turnos/${id}`);
             const datos = await res.json();
-            document.querySelector('#editForm #id').value = datos.id;
+            document.querySelector('#editForm #id').value = datos.id_producto;
             document.querySelector('#editForm #nombre').value = datos.nombre;
-            document.querySelector('#editForm #apellido').value = datos.apellido;
-            document.querySelector('#editForm #telefono').value = datos.telefono;
-            document.querySelector('#editForm #mail').value = datos.mail;
-            document.querySelector('#editForm #sucursal').value = datos.sucursal;
-            document.querySelector('#editForm #barbero').value = datos.barbero;
-            document.querySelector('#editForm #fecha_turno').value = datos.fecha_turno;
-            document.querySelector('#editForm #hora_turno').value = datos.hora_turno;
-            document.querySelector('#editForm #servicio').value = datos.servicio;
+            document.querySelector('#editForm #precio').value = datos.precio;
+            document.querySelector('#editForm #descripcion').value = datos.descripcion;
+            document.querySelector('#editForm #stock').value = datos.stock;
+            document.querySelector('#editForm #categoria').value = datos.categoria_nombre;
+            document.querySelector('#editForm #promo').value = datos.promos_nombre;
+            document.querySelector('#editForm #cuotas').value = datos.cuotas_nombre;
             new bootstrap.Modal(document.querySelector('#editModal')).show();
         } catch (error) {
-            console.error('Error al cargar datos para modificar:', error);
+            console.error('Error al cargar producto:', error);
         }
     }
+});
 
+document.querySelector('#turnos').addEventListener('click', async (event) => {
     if (event.target.classList.contains('eliminar')) {
         const id = event.target.dataset.id;
         try {
-            await fetch(`/api/turnos`, {
+            await fetch(`/api/turnos/${id}`, {
                 method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: new URLSearchParams({ idEliminar: id })
             });
-            event.target.closest('tr').remove();
+            location.reload();
         } catch (error) {
-            console.error('Error al eliminar turno:', error);
+            console.error('Error al eliminar producto:', error);
         }
+    }
+});
+
+document.querySelector('#createForm').addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const datos = Object.fromEntries(formData.entries());
+    try {
+        await fetch('/api/turnos', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(datos),
+        });
+        location.reload();
+    } catch (error) {
+        console.error('Error al crear producto:', error);
     }
 });
 
 document.querySelector('#editForm').addEventListener('submit', async (event) => {
     event.preventDefault();
-    const form = event.target;
-    const formData = new FormData(form);
-
-
+    const formData = new FormData(event.target);
+    const datos = Object.fromEntries(formData.entries());
+    const id = datos.id_producto;
+    delete datos.id_producto;
     try {
-        await fetch('/api/turnos', {
+        await fetch(`/api/turnos/${id}`, {
             method: 'PUT',
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/json'
             },
-            body: new URLSearchParams(formData)
+            body: JSON.stringify(datos),
         });
-        new bootstrap.Modal(document.querySelector('#editModal')).hide();
-        document.dispatchEvent(new Event('DOMContentLoaded')); 
+        location.reload();
     } catch (error) {
-        console.error('Error al actualizar turno:', error);
+        console.error('Error al actualizar producto:', error);
     }
 });
