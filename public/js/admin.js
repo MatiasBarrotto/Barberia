@@ -2,30 +2,32 @@ document.addEventListener('DOMContentLoaded', async () => {
     try {
         const res = await fetch('http://localhost:8080/api/productos');
         const datos = await res.json();
-        console.log(datos);
-        let productosHTML = document.querySelector('#productos');
-        productosHTML.innerHTML = '';
-        datos.forEach(registro => {
-            productosHTML.innerHTML += `
-                <tr>
-                    <td>${registro.nombre}</td>
-                    <td>${registro.precio}</td>
-                    <td>${registro.descripcion}</td>
-                    <td>${registro.stock}</td>
-                    <td>${registro.categoria_nombre}</td>
-                    <td>${registro.promos_nombre}</td>
-                    <td>${registro.cuotas_nombre}</td>
-                    <td>
-                        <button class="btn btn-warning modificar" data-id="${registro.id_producto}">Modificar</button>
-                        <button class="btn btn-danger eliminar" data-id="${registro.id_producto}">Eliminar</button>
-                    </td>
-                </tr>`;
-        });
+        cargarProductos(datos);
     } catch (error) {
         console.error('Error al cargar productos:', error);
     }
 });
 
+function cargarProductos(datos) {
+    let productosHTML = document.querySelector('#productos');
+    productosHTML.innerHTML = '';
+    datos.forEach(registro => {
+        productosHTML.innerHTML += `
+            <tr>
+                <td>${registro.nombre}</td>
+                <td>${registro.precio}</td>
+                <td>${registro.descripcion}</td>
+                <td>${registro.stock}</td>
+                <td>${registro.categoria_nombre}</td>
+                <td>${registro.promos_nombre}</td>
+                <td>${registro.cuotas_nombre}</td>
+                <td>
+                    <button class="btn btn-warning modificar" data-id="${registro.id_producto}">Modificar</button>
+                    <button class="btn btn-danger eliminar" data-id="${registro.id_producto}">Eliminar</button>
+                </td>
+            </tr>`;
+    });
+}
 document.querySelector('#productos').addEventListener('click', async (event) => {
     if (event.target.classList.contains('modificar')) {
         const id = event.target.dataset.id;
@@ -37,9 +39,9 @@ document.querySelector('#productos').addEventListener('click', async (event) => 
             document.querySelector('#editForm #precio').value = datos.precio;
             document.querySelector('#editForm #descripcion').value = datos.descripcion;
             document.querySelector('#editForm #stock').value = datos.stock;
-            document.querySelector('#editForm #fk_categoria').value = datos.categoria_nombre;
-            document.querySelector('#editForm #fk_promos').value = datos.promos_nombre;
-            document.querySelector('#editForm #fk_cuotas').value = datos.cuotas_nombre;
+            document.querySelector('#editForm #fk_categoria').value = datos.fk_categoria;
+            document.querySelector('#editForm #fk_promos').value = datos.fk_promos;
+            document.querySelector('#editForm #fk_cuotas').value = datos.fk_cuotas;
             new bootstrap.Modal(document.querySelector('#editModal')).show();
         } catch (error) {
             console.error('Error al cargar datos para modificar:', error);
@@ -62,7 +64,6 @@ document.querySelector('#productos').addEventListener('click', async (event) => 
         }
     }
 });
-
 document.querySelector('#createForm').addEventListener('submit', async (event) => {
     event.preventDefault();
     const form = event.target;
@@ -73,7 +74,9 @@ document.querySelector('#createForm').addEventListener('submit', async (event) =
             method: 'POST',
             body: new URLSearchParams(formData)
         });
-        document.dispatchEvent(new Event('DOMContentLoaded'));
+        const res = await fetch('http://localhost:8080/api/productos');
+        const datos = await res.json();
+        cargarProductos(datos);
     } catch (error) {
         console.error('Error al crear producto:', error);
     }
@@ -90,7 +93,9 @@ document.querySelector('#editForm').addEventListener('submit', async (event) => 
             body: new URLSearchParams(formData)
         });
         new bootstrap.Modal(document.querySelector('#editModal')).hide();
-        document.dispatchEvent(new Event('DOMContentLoaded'));
+        const res = await fetch('http://localhost:8080/api/productos');
+        const datos = await res.json();
+        cargarProductos(datos);
     } catch (error) {
         console.error('Error al actualizar producto:', error);
     }

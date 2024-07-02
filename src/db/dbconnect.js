@@ -1,5 +1,3 @@
-const mysql = require('mysql2');
-
 const pool = mysql.createPool({
   host: 'sql10.freesqldatabase.com',
   user: 'sql10717263',
@@ -14,5 +12,3 @@ const pool = mysql.createPool({
 module.exports = {
   conn: pool.promise()
 };
-
-
