@@ -1,11 +1,12 @@
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        const res = await fetch('http://localhost:8080/api/turnos');
+        const res = await fetch('http://localhost:8080/api/productos');
         const datos = await res.json();
-        let turnosHTML = document.querySelector('#turnos');
-        turnosHTML.innerHTML = '';
+        console.log(datos);
+        let productosHTML = document.querySelector('#productos');
+        productosHTML.innerHTML = '';
         datos.forEach(registro => {
-            turnosHTML.innerHTML += `
+            productosHTML.innerHTML += `
                 <tr>
                     <td>${registro.nombre}</td>
                     <td>${registro.precio}</td>
@@ -25,35 +26,37 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
-document.querySelector('#turnos').addEventListener('click', async (event) => {
+document.querySelector('#productos').addEventListener('click', async (event) => {
     if (event.target.classList.contains('modificar')) {
         const id = event.target.dataset.id;
         try {
-            const res = await fetch(`/api/turnos/${id}`);
+            const res = await fetch(`/api/productos/${id}`);
             const datos = await res.json();
             document.querySelector('#editForm #id').value = datos.id_producto;
             document.querySelector('#editForm #nombre').value = datos.nombre;
             document.querySelector('#editForm #precio').value = datos.precio;
             document.querySelector('#editForm #descripcion').value = datos.descripcion;
             document.querySelector('#editForm #stock').value = datos.stock;
-            document.querySelector('#editForm #categoria').value = datos.categoria_nombre;
-            document.querySelector('#editForm #promo').value = datos.promos_nombre;
-            document.querySelector('#editForm #cuotas').value = datos.cuotas_nombre;
+            document.querySelector('#editForm #fk_categoria').value = datos.categoria_nombre;
+            document.querySelector('#editForm #fk_promos').value = datos.promos_nombre;
+            document.querySelector('#editForm #fk_cuotas').value = datos.cuotas_nombre;
             new bootstrap.Modal(document.querySelector('#editModal')).show();
         } catch (error) {
-            console.error('Error al cargar producto:', error);
+            console.error('Error al cargar datos para modificar:', error);
         }
     }
-});
 
-document.querySelector('#turnos').addEventListener('click', async (event) => {
     if (event.target.classList.contains('eliminar')) {
         const id = event.target.dataset.id;
         try {
-            await fetch(`/api/turnos/${id}`, {
+            await fetch(`/api/productos`, {
                 method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({ idEliminar: id })
             });
-            location.reload();
+            event.target.closest('tr').remove();
         } catch (error) {
             console.error('Error al eliminar producto:', error);
         }
@@ -62,17 +65,15 @@ document.querySelector('#turnos').addEventListener('click', async (event) => {
 
 document.querySelector('#createForm').addEventListener('submit', async (event) => {
     event.preventDefault();
-    const formData = new FormData(event.target);
-    const datos = Object.fromEntries(formData.entries());
+    const form = event.target;
+    const formData = new FormData(form);
+
     try {
-        await fetch('/api/turnos', {
+        await fetch('/api/productos', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(datos),
+            body: new URLSearchParams(formData)
         });
-        location.reload();
+        document.dispatchEvent(new Event('DOMContentLoaded'));
     } catch (error) {
         console.error('Error al crear producto:', error);
     }
@@ -80,19 +81,16 @@ document.querySelector('#createForm').addEventListener('submit', async (event) =
 
 document.querySelector('#editForm').addEventListener('submit', async (event) => {
     event.preventDefault();
-    const formData = new FormData(event.target);
-    const datos = Object.fromEntries(formData.entries());
-    const id = datos.id_producto;
-    delete datos.id_producto;
+    const form = event.target;
+    const formData = new FormData(form);
+
     try {
-        await fetch(`/api/turnos/${id}`, {
+        await fetch('/api/productos', {
             method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(datos),
+            body: new URLSearchParams(formData)
         });
-        location.reload();
+        new bootstrap.Modal(document.querySelector('#editModal')).hide();
+        document.dispatchEvent(new Event('DOMContentLoaded'));
     } catch (error) {
         console.error('Error al actualizar producto:', error);
     }

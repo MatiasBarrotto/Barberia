@@ -12,7 +12,7 @@ const pool = mysql.createPool({
 });
 
 module.exports = {
-	conn: pool.promise()
-}
+  conn: pool.promise()
+};
 
 

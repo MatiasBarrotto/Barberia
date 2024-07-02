@@ -28,50 +28,48 @@
                     <th>Descripción</th>
                     <th>Stock</th>
                     <th>Categoria</th>
-                    <th>Promo</th>
+                    <th>Promoción</th>
                     <th>Cuotas</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
-            <tbody id="turnos">
+            <tbody id="productos">
             </tbody>
         </table>
-        <!-- Formulario para crear producto -->
+
         <h2>Crear Producto</h2>
-        <form id="createForm" class="row g-3">
-            <div class="col-md-3">
+        <form id="createForm" action="/api/productos" method="POST" enctype="multipart/form-data" class="producto-form">
+            <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" class="form-control">
+                <input type="text" id="nombre" name="nombre" class="form-control" required>
             </div>
-            <div class="col-md-3">
+            <div class="mb-3">
                 <label for="precio" class="form-label">Precio:</label>
-                <input type="number" id="precio" name="precio" class="form-control">
+                <input type="number" id="precio" name="precio" class="form-control" required>
             </div>
-            <div class="col-md-3">
+            <div class="mb-3">
                 <label for="descripcion" class="form-label">Descripción:</label>
-                <input type="text" id="descripcion" name="descripcion" class="form-control">
+                <input type="text" id="descripcion" name="descripcion" class="form-control" required>
             </div>
-            <div class="col-md-3">
+            <div class="mb-3">
                 <label for="stock" class="form-label">Stock:</label>
-                <input type="number" id="stock" name="stock" class="form-control">
+                <input type="number" id="stock" name="stock" class="form-control" required>
             </div>
-            <div class="col-md-3">
-                <label for="categoria" class="form-label">Categoría:</label>
-                <input type="text" id="categoria" name="categoria" class="form-control">
+            <div class="mb-3">
+                <label for="fk_categoria" class="form-label">Categoría:</label>
+                <input type="number" id="fk_categoria" name="fk_categoria" class="form-control" required>
             </div>
-            <div class="col-md-3">
-                <label for="promo" class="form-label">Promo:</label>
-                <input type="text" id="promo" name="promo" class="form-control">
+            <div class="mb-3">
+                <label for="fk_promos" class="form-label">Promoción:</label>
+                <input type="number" id="fk_promos" name="fk_promos" class="form-control" required>
             </div>
-            <div class="col-md-3">
-                <label for="cuotas" class="form-label">Cuotas:</label>
-                <input type="text" id="cuotas" name="cuotas" class="form-control">
+            <div class="mb-3">
+                <label for="fk_cuotas" class="form-label">Cuotas:</label>
+                <input type="number" id="fk_cuotas" name="fk_cuotas" class="form-control" required>
             </div>
-            <div class="col-md-3 d-grid">
-                <button type="submit" class="btn btn-primary mt-4">Crear</button>
-            </div>
+            <button type="submit" class="btn btn-primary">Crear Registro</button>
         </form>
-        <!-- Modal para editar producto -->
+
         <div id="editModal" class="modal" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -80,7 +78,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body">
-                        <form id="editForm" method="POST" action="/api/turnos" enctype="application/x-www-form-urlencoded">
+                        <form id="editForm" method="POST" action="/api/productos" enctype="application/x-www-form-urlencoded">
                             <input type="hidden" id="id" name="id">
                             <div class="mb-3">
                                 <label for="nombre" class="form-label">Nombre:</label>
@@ -99,16 +97,16 @@
                                 <input type="number" id="stock" name="stock" class="form-control">
                             </div>
                             <div class="mb-3">
-                                <label for="categoria" class="form-label">Categoría:</label>
-                                <input type="text" id="categoria" name="categoria" class="form-control">
+                                <label for="fk_categoria" class="form-label">Categoría:</label>
+                                <input type="number" id="fk_categoria" name="fk_categoria" class="form-control">
                             </div>
                             <div class="mb-3">
-                                <label for="promo" class="form-label">Promo:</label>
-                                <input type="text" id="promo" name="promo" class="form-control">
+                                <label for="fk_promos" class="form-label">Promoción:</label>
+                                <input type="number" id="fk_promos" name="fk_promos" class="form-control">
                             </div>
                             <div class="mb-3">
-                                <label for="cuotas" class="form-label">Cuotas:</label>
-                                <input type="text" id="cuotas" name="cuotas" class="form-control">
+                                <label for="fk_cuotas" class="form-label">Cuotas:</label>
+                                <input type="number" id="fk_cuotas" name="fk_cuotas" class="form-control">
                             </div>
                             <button type="submit" class="btn btn-primary">Actualizar</button>
                         </form>

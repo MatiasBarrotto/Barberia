@@ -1,9 +1,9 @@
-const {conn} = require('../db/dbconnect');
+const { conn } = require('../db/dbconnect');
 
 module.exports = {
     getProductos: async (req, res) => {
         try {
-            const [registro] = await conn.query(`
+            const [registros] = await conn.query(`
                 SELECT 
                     p.id_producto, p.nombre, p.precio, p.descripcion, p.stock,
                     c.nombre AS categoria_nombre, 
@@ -14,14 +14,13 @@ module.exports = {
                 LEFT JOIN Promos pr ON p.fk_promos = pr.id_promos
                 LEFT JOIN Cuotas cu ON p.fk_cuotas = cu.id_cuotas
             `);
-            res.json(registro);
+            res.json(registros);
         } catch (error) {
             res.status(500).send(error.message);
         }
     },
 
     getProductoPorId: async (req, res) => {
-        const { id } = req.params;
         try {
             const [registro] = await conn.query(`
                 SELECT 
@@ -34,7 +33,7 @@ module.exports = {
                 LEFT JOIN Promos pr ON p.fk_promos = pr.id_promos
                 LEFT JOIN Cuotas cu ON p.fk_cuotas = cu.id_cuotas
                 WHERE p.id_producto = ?
-            `, [id]);
+            `, [req.params.id]);
             res.json(registro[0]);
         } catch (error) {
             res.status(500).send(error.message);
@@ -46,36 +45,34 @@ module.exports = {
         try {
             await conn.query(`
                 INSERT INTO Producto (nombre, precio, descripcion, stock, fk_categoria, fk_promos, fk_cuotas)
-                VALUES (?, ?, ?, ?, ?, ?, ?)
-            `, [nombre, precio, descripcion, stock, fk_categoria, fk_promos, fk_cuotas]);
-            res.redirect('/admin.html'); // Redireccionamiento después de crear el producto
+                VALUES (?, ?, ?, ?, ?, ?, ?)`, 
+                [nombre, precio, descripcion, stock, fk_categoria, fk_promos, fk_cuotas]);
+            res.redirect('/admin.html');
         } catch (error) {
             res.status(500).send(error.message);
         }
     },
-    
+
     actualizar: async (req, res) => {
-        const { id, nombre, precio, descripcion, stock, fk_categoria, fk_promos, fk_cuotas} = req.body;
+        const { id, nombre, precio, descripcion, stock, fk_categoria, fk_promos, fk_cuotas } = req.body;
         try {
             await conn.query(`
                 UPDATE Producto
                 SET nombre = ?, precio = ?, descripcion = ?, stock = ?, fk_categoria = ?, fk_promos = ?, fk_cuotas = ?
-                WHERE id_producto = ?
-            `, [nombre, precio, descripcion, stock, fk_categoria, fk_promos, fk_cuotas, id]);
-            res.send('Producto actualizado');
+                WHERE id= ?`, 
+                [nombre, precio, descripcion, stock, fk_categoria, fk_promos, fk_cuotas, id]);
+            res.redirect('/admin.html');
         } catch (error) {
             res.status(500).send(error.message);
         }
     },
-    
+
     eliminar: async (req, res) => {
-        const { idEliminar } = req.body;
         try {
-            await conn.query('DELETE FROM Producto WHERE id_producto = ?', [idEliminar]);
-            res.redirect('/admin.html'); // Redireccionamiento después de eliminar el producto
+            await conn.query(`DELETE FROM Producto WHERE id = ?`, [req.body.idEliminar]);
+            res.redirect('/admin.html');
         } catch (error) {
             res.status(500).send(error.message);
         }
     },
-    
 };
